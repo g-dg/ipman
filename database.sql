@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "tracked_locations" (
 );
 
 CREATE TABLE IF NOT EXISTS "address_history" (
-	"entry_id" INTEGER PRIMARY KEY NTO NULL,
+	"entry_id" INTEGER PRIMARY KEY NOT NULL,
 	"location_id" INTEGER NOT NULL REFERENCES "tracked_locations"("id") ON UPDATE CASCADE ON DELETE CASCADE,
 	"ip_address" TEXT,
 	"timestamp" INTEGER NOT NULL,
