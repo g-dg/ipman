@@ -19,7 +19,10 @@ CREATE TABLE IF NOT EXISTS "address_history" (
 	"entry_id" INTEGER PRIMARY KEY NTO NULL,
 	"location_id" INTEGER NOT NULL REFERENCES "tracked_locations"("id") ON UPDATE CASCADE ON DELETE CASCADE,
 	"ip_address" TEXT,
+	"timestamp" INTEGER NOT NULL,
 	UNIQUE("location_id", "ip_address") ON CONFLICT REPLACE
 );
+
+CREATE INDEX IF NOT EXISTS "idx_addresshistory_ipaddress" ON "address_history"("ip_address");
 
 COMMIT TRANSACTION;
