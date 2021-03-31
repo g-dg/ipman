@@ -13,7 +13,7 @@ class IPManagerAPI
 	public static function db_connect()
 	{
 		// return if already connected
-		if (isset($GLOBALS['_ipman_dbconn'])) {
+		if (isset(self::$dbconn)) {
 			return;
 		}
 
@@ -72,11 +72,13 @@ class IPManagerAPI
 
 	private static function db_trans()
 	{
+		self::db_connect();
 		self::$dbconn->beginTransaction();
 	}
 
 	private static function db_commit()
 	{
+		self::db_connect();
 		self::$dbconn->commit();
 	}
 
